@@ -90,7 +90,7 @@ Journalists and privacy-conscious users.
 </td></tr></table>
 <br>
 Select Favorite Linux Distro
-<select id="select_linux" name="select_linux" style="width: 30%; margin-left:35%">
+<select id="select_distro" name="select_distro" style="width: 30%; margin-left:35%">
 <option value="">None</option>
 <option value="Ubuntu">Ubuntu</option>
 <option value="Linux Mint">Linux Mint</option>
@@ -113,6 +113,23 @@ Select Favorite Linux Distro
 <footer>
 <h6>&#169; DomainTrusts.com 2026</h6>
 </footer>
-<br><br>
+<script>
+// Get the select element by its ID
+const distroSelect = document.getElementById('select_distro');
+
+// Listen for changes in the selection
+distroSelect.addEventListener('change', function() {
+  const selectedValue = this.value;
+  const selectedText = this.options[this.selectedIndex].text;
+
+  // Only track if a real selection is made (ignoring the empty "None" value)
+  if (selectedValue) {
+    gtag('event', 'select_distro_choice', {
+      'distro_name': selectedValue, // e.g., "Linux Mint"
+      'distro_label': selectedText  // e.g., "Linux Mint"
+    });
+  }
+});
+</script>
 </body>
 </html>
