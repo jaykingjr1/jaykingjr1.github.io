@@ -22,9 +22,20 @@
 </header>
 
 <?php
+$file = 'data/contact.log';
 
-  function contactLog($uFName,$uLName,$uEmail,$uComment) {
-	$log_entry = date('Y-m-d H:i:s')
+// define variables and set to empty values
+$uLName = $uFName = $uEmail = $uComment = $msg1 = "";
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $uFName = clean_input($_POST["uFName"]);
+  $uLName = clean_input($_POST["uLName"]);
+  $uEmail = clean_input($_POST["uEmail"]);
+  $uComment = clean_input($_POST["uComment"]); 
+}
+
+$data = date('Y-m-d H:i:s')
 	. ","
 	.$uFName
 	. ","
@@ -34,9 +45,19 @@
 	. ","
 	.$uComment
 	. PHP_EOL;
-	$log_file = '../contact/contact.log';
-	file_put_contents($log_file, $log_entry, FILE_APPEND | LOCK_EX);
+
+
+// Append the data to the file
+
+$result = file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
+
+if ($result === false) {
+   $msg1 = "Error: Could not send text.";
+} else {
+    $msg1 = "Text sent Successfully.";
 }
+
+
 // function to clean data
 function clean_input($data) {
   $data = trim($data);
@@ -44,24 +65,9 @@ function clean_input($data) {
   return $data;
 }
 
-// define variables and set to empty values
-$uLName = $uFName = $uEmail = $uComment = $msg1 = $msg2 = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $uFName = clean_input($_POST["uFName"]);
-  $uLName = clean_input($_POST["uLName"]);
-  $uEmail = clean_input($_POST["uEmail"]);
-  $uComment = clean_input($_POST["uComment"]); 
-}
-
-// Append the data to the file
-if (file_put_contents($file, $data, FILE_APPEND | LOCK_EX)) {
-    msg1 = "Sent Successfully.";
-} else {
-    msg1 = "Error: Could not send text.";
-}
 ?>
 <nav>
-<a class="btn1" href="index.html">Home</a>
+<a class="btn1" href="https://jaykingjr1.github.io">Home</a>
 </nav>
 <main>
 <h2>
@@ -82,3 +88,4 @@ Thank you. Have a nice day.
 </footer>
 </body>
 </html>
+?>
