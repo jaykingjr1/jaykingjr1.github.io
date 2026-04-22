@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K36B9WE77T"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-K36B9WE77T');
 </script>
 <link rel="stylesheet" type="text/css" href="css/styleAC.css">
@@ -43,7 +41,6 @@ $data = date('Y-m-d H:i:s')
 	. PHP_EOL;
 // Append the data to the file
 $result = file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
-
 if ($result === false) {
    $msg1 = "Error: Could not send text.";
 } else {
@@ -55,7 +52,6 @@ function clean_input($data) {
   $data = stripslashes($data);
   return $data;
 }
-
 ?>
 <nav>
 <a class="btn1" href="https://jaykingjr1.github.io">Home</a>
