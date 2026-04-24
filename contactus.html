@@ -65,7 +65,7 @@ placeholder="* Enter required text here..." ></textarea></p>
 <div class="centerbutton">
 <input class ="btn2" type="reset">
 <input class ="btn2" type="submit" value="Text">  
-  <a class = "btn2" href="mailto:jaykingjr@domaintrusts.com?subject=Me&body=<b>ME</b>">Email</a>
+  <a class = "btn2" onclick="sendEmail()>Email</a>
 </div>
 </form>
 <br>
@@ -98,6 +98,24 @@ document.getElementById('meme').addEventListener('submit', function(event) {
         event_label: "contact_form"
       });
     });
+
+function sendEmail() {
+    // 1. Get the dynamic text from the input
+    const t1 = document.getElementById('uFName').value;
+    const t2 = document.getElementById('uLName').value;
+    const t3 = document.getElementById('uEmail').value;
+    const t4 = document.getElementById('uComment').value;
+    const bodyText = `${t1} ${t2} ${t3} ${t4}`;  
+    // 2. Set your static details
+    const recipient = "jaykingjr@domaintrusts.com";
+    const subject = "Contact Linux Campaign";
+    
+    // 3. Construct the URL (Encoding is key!)
+    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+    
+    // 4. Trigger the user's default mail app
+    window.location.href = mailtoUrl;
+}
 </script>
 </script>
 </html>
