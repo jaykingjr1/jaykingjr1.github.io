@@ -44,9 +44,10 @@
 </form>
 <h2>Contact Us by Text</h2>
 <p>
-The following is a contact form .
+The following is a contact form for texting.
 <br><br>
-If you wish to send email, without the form, email is jaykingjr@domaintrusts.com
+If you wish to send email, without this form, email is jaykingjr@domaintrusts.com or
+<a class = "btn2" href="mailto:jaykingjr@domaintrusts.com?subject=Contact Linux Campaign&body=Your Message Content">&ensp;&ensp; Email</a>
 <br><br>
 Required fields are marked with an asterisk *</p>
 <form id = "contactForm" method="post" action="https://domaintrusts.com/contactus.php">
@@ -60,12 +61,12 @@ Required fields are marked with an asterisk *</p>
 <label for="uEmail">* E-mail:</label>
 <input type="email" size="36" name="uEmail" id="uEmail" required="required">
 <br><br>
-<textarea rows="20" name="uComment" required="required" 
-placeholder="* Enter required text here..." ></textarea></p>
+<textarea rows="20" name="uComment" required="required" placeholder="* Enter required text here..." >
+</textarea>
+</p>
 <div class="centerbutton">
 <input class ="btn2" type="reset">
-<input class ="btn2" type="submit" value="Text">  
-  <a class = "btn2" onclick="sendEmail()>Email</a>
+<input class ="btn2" type="submit" value="Text">
 </div>
 </form>
 <br><br>
@@ -98,7 +99,6 @@ document.getElementById('meme').addEventListener('submit', function(event) {
         event_label: "contact_form"
       });
     });
-
 function sendEmail() {
     // 1. Get the dynamic text from the input
     const t1 = document.getElementById('uFName').value;
